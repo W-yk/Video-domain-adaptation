@@ -48,4 +48,4 @@ then
 
 fi
 
-python ResNetCRNN.py  --train_source_list $train_source_list --train_target_list $train_target_list --val_list $val_list --class_file $class_file
+python normLossRNN.py  --train_source_list $train_source_list --train_target_list $train_target_list --val_list $val_list --class_file $class_file

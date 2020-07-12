@@ -43,7 +43,6 @@ args = parser.parse_args()
 # EncoderCNN architecture
 CNN_fc_hidden1, CNN_fc_hidden2 = 1024, 768
 CNN_embed_dim = 512   # latent dim extracted by 2D CNN
-res_size = 224        # ResNet image size
 dropout_p = 0.0       # dropout probability
 
 # DecoderRNN architecture
@@ -254,7 +253,7 @@ target_loader = torch.utils.data.DataLoader(target_set, batch_size=args.batch_si
 
 
 # Create model
-cnn_encoder = ResCNNEncoder(fc_hidden1=CNN_fc_hidden1, fc_hidden2=CNN_fc_hidden2, drop_p=dropout_p, CNN_embed_dim=CNN_embed_dim).to(device)
+cnn_encoder = Encoder(fc_hidden1=CNN_fc_hidden1, fc_hidden2=CNN_fc_hidden2, drop_p=dropout_p, CNN_embed_dim=CNN_embed_dim).to(device)
 rnn_decoder = DecoderRNN(CNN_embed_dim=CNN_embed_dim, h_RNN_layers=RNN_hidden_layers, h_RNN=RNN_hidden_nodes, 
                          h_FC_dim=RNN_FC_dim, drop_p=dropout_p, num_classes=k).to(device)
 
